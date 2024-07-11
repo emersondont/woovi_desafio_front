@@ -1,28 +1,22 @@
-import { useState } from 'react';
-import './payment.css'
-import PaymentListItem from '../../components/paymentListItem/paymentListItem';
-import PaymentPageLayout from '../../components/paymentPageLayout/paymentPageLayout';
-import PaymentList from '../../components/paymentsList/paymentList';
-import paymentMethods from '../../utils/paymentMethodsData';
+import { useLocation } from "react-router-dom";
+import PaymentPageLayout from "../../components/paymentPageLayout/paymentPageLayout";
+import paymentMethods from "../../utils/paymentMethodsData";
+import PaymentDetail from "../../types/paymentDetailType";
 
 export default function Payment() {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('');
+  const { pathname } = useLocation();
+  const idMethod = pathname.split('/')[2];
+  const method = paymentMethods.reduce<{ type: string, item: PaymentDetail } | null>((acc, method) => {
+    const item = method.items.find(item => item.id === idMethod);
+    if (item) {
+      acc = { type: method.type, item };
+    }
+    return acc;
+  }, null);
+
   return (
-    <PaymentPageLayout title='João, como você quer pagar?'>
-      {
-        paymentMethods.map((paymentMethod, index) => (
-          <PaymentList type={paymentMethod.type} key={index}>
-            {
-              paymentMethod.items.map((item) => (
-                <PaymentListItem
-                  key={item.id}
-                  item={item}
-                  select={setSelectedPaymentMethod}
-                  selected={selectedPaymentMethod === item.id}
-                />
-              ))}
-          </PaymentList>
-        ))}
+    <PaymentPageLayout title='João, pague a entrada de R$ 15.300,00 pelo Pix'>
+      {method?.type}
     </PaymentPageLayout>
-  );
+  )
 }
