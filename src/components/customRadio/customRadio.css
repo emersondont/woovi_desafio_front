@@ -1,0 +1,37 @@
+.custom-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-radio input {
+  display: none;
+}
+
+.radio-button {
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--stroke);
+  border-radius: 50%;
+  position: relative;
+}
+.radio-button:hover {
+  border-color: var(--green-woovi);
+}
+
+.custom-radio input:checked+.radio-button {
+  background-color: var(--green-woovi);
+  border-color: var(--green-woovi);
+}
+
+.custom-radio input:checked+.radio-button::after {
+  content: "";
+  width: 11px;
+  height: 9px;
+  background: url('checked.svg') no-repeat center center;
+  background-size: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

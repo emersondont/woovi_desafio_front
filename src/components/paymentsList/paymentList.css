@@ -1,0 +1,19 @@
+.list {
+  position: relative;
+  width: 100%;
+  /* border: 1px solid var(--stroke); */
+  /* padding: 20px; */
+}
+
+.payment_type_label {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  transform: translateY(-50%);
+  background-color: var(--stroke);
+  font-weight: 800;
+  font-size: 18px;
+  padding: 2px 18px;
+  border-radius: 100px;
+  z-index: 2;
+}

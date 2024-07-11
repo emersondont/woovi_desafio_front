@@ -1,0 +1,86 @@
+.payment_list_item {
+  padding: 20px;
+  border: 2px solid var(--stroke);
+}
+
+.payment_list_item.selected {
+  position: relative;
+  z-index: 1;
+  border-color: var(--green-woovi);
+  background-color: var(--green-woovi-opacity);
+}
+
+.payment_list_item:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.payment_list_item:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+.payment_list_item:only-child {
+  border-radius: 10px;
+}
+
+.payment_list_item:nth-child(n+2) {
+  margin-top: -2px;
+}
+
+
+.payment_details {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.payment_details .installments {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.payment_details .total {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color-secondary);
+}
+
+.cashback {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--green-woovi);
+}
+
+.reward {
+  background-color: var(--blue);
+  padding: 6px 20px 6px 10px;
+  position: relative;
+  width: 100%;
+  margin-top: 6px;
+  border-radius: 4px;
+}
+
+.reward p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reward:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-right: 20px solid #fff;
+}
+
+.payment_list_item.selected .reward:after {
+  border-right: 20px solid var(--green-woovi-opacity);
+}
